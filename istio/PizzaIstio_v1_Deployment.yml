@@ -1,0 +1,29 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: tmppizzaistio
+    version: v1
+  name: tmppizzaistio-v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tmppizzaistio
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: tmppizzaistio
+        version: v1
+    spec:
+      containers:
+      - image: 172.30.1.1:5000/test/tmppizzaistio:v1
+        imagePullPolicy: IfNotPresent
+        name: tmppizzaistio
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+        securityContext:
+          privileged: false
