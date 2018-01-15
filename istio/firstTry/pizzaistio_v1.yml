@@ -1,0 +1,29 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: pizzaistio
+    version: v1
+  name: pizzaistio
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pizzaistio
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: pizzaistio
+        version: v1
+    spec:
+      containers:
+      - image:  172.30.1.1:5000/test/pizza:v1
+        imagePullPolicy: IfNotPresent
+        name: pizza
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+        securityContext:
+          privileged: false
