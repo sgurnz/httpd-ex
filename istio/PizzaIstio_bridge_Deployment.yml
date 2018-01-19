@@ -1,18 +1,17 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: pizzaistio-v1
+  name: pizzaistio-bridge
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: pizzaistio
-        version: v1
+        app: pizzaistio-bridge
     spec:
       containers:
-      - name: pizzaistio
-        image: 172.30.1.1:5000/test/pizzaistio:v1
+      - name: pizzaistio-bridge
+        image: 172.30.1.1:5000/test/pizza:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080

@@ -6,7 +6,7 @@ metadata:
     app: pizzaistio
 spec:
   ports:
-  - name: http
-    port: 8080
+  - port: 8080
+    name: http    
   selector:
     app: pizzaistio

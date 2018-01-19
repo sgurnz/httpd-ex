@@ -1,0 +1,6 @@
+#sull'istanza OCP:
+
+docker images | grep pizzaistio
+docker tag 667b7df35b6c 172.30.1.1:5000/test/tmppizzaistio:v1
+
+http://pizzaistio:8080/
