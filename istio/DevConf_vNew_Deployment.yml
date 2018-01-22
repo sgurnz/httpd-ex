@@ -8,11 +8,11 @@ spec:
     metadata:
       labels:
         app: devconf
-        version: vnew
+        version: v2
     spec:
       containers:
       - name: devconf
-        image: 172.30.1.1:5000/istiocbr/devconf:vNew
+        image: 172.30.1.1:5000/istiocbr/devconf:vnew
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080

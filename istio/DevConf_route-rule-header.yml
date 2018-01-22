@@ -1,0 +1,16 @@
+apiVersion: config.istio.io/v1alpha2
+kind: RouteRule
+metadata:
+  name: devconf-header
+spec:
+  destination:
+    name: devconf
+  precedence: 2
+  match:
+    request:
+      headers:
+        site:
+          regex: ".*new.*"
+  route:
+  - labels:
+      version: v2

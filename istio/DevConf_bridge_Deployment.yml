@@ -1,18 +1,17 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: devconf-vold
+  name: transparent-proxy
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: devconf
-        version: v1
+        app: transparent-proxy
     spec:
       containers:
-      - name: devconf
-        image: 172.30.1.1:5000/istiocbr/devconf:vold
+      - name: transparent-proxy
+        image: 172.30.1.1:5000/istiocbr/transparent-proxy:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080
