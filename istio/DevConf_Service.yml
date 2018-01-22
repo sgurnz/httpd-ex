@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: pizzaistio
+  name: devconf
   labels:
-    app: pizzaistio
+    app: devconf
 spec:
   ports:
   - port: 8080
-    name: http    
+    name: http
   selector:
-    app: pizzaistio
+    app: devconf

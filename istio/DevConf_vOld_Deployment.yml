@@ -1,18 +1,18 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: pizzaistio-v1
+  name: devconf-vold
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: pizzaistio
-        version: v1
+        app: devconf
+        version: vold
     spec:
       containers:
-      - name: pizzaistio
-        image: 172.30.1.1:5000/test/pizzaistio:v1
+      - name: devconf
+        image: 172.30.1.1:5000/istiocbr/devconf:vOld
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080

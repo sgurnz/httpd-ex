@@ -1,6 +1,45 @@
+ISTIO
+
 #sull'istanza OCP:
 
-docker images | grep pizzaistio
-docker tag 667b7df35b6c 172.30.1.1:5000/test/tmppizzaistio:v1
+docker images | grep devconf
+docker tag 880d0fea1d5e 172.30.1.1:5000/istiocbr/devconf:vNew
 
-http://pizzaistio:8080/
+oc adm policy add-scc-to-user privileged -z default -n istiocbr
+
+oc apply -f <(istioctl kube-inject -f DevConf_vOld_Deployment.yml)
+
+oc expose pod devconf-vold-528375666-9gtqg --port=8080
+oc expose pod devconf-vold-528375666-9gtqg --port=8080
+
+
+oc apply -f <(istioctl kube-inject -f DevConf_vNew_Deployment.yml)
+
+oc expose pod devconf-vnew-1922905550-g5tv9 --port=8080
+oc expose service devconf-vnew-1922905550-g5tv9
+
+oc create -f ./DevConf_Service.yml
+
+curl http://devconf:8080
+
+
+
+
+
+
+
+
+
+
+CAMEL
+----create s2i spring boot transparent
+
+
+oc policy add-role-to-user view system:serviceaccount:istiocbr:default -n istiocbr
+
+
+oc create -f ./src/main/resources/configmap.yml
+
+
+oc expose dc transparent-proxy --port=8080
+oc expose service transparent-proxy
