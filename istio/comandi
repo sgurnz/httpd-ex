@@ -23,7 +23,7 @@ oc apply -f <(istioctl kube-inject -f istio/DevConf_bridge_Deployment.yml)
 oc expose deployment transparent-proxy --port=8080
 oc expose service transparent-proxy oc expose service transparent-proxy
 
-oc create -f istio/DevConf_route-rule-all-vOld.yml 
+oc create -f istio/DevConf_route-rule-all-vOld.yml
 oc create -f istio/DevConf_route-rule-header.yml
 
 
@@ -34,7 +34,7 @@ CAMEL
 ----create s2i spring boot transparent
 
 
-oc policy add-role-to-user view system:serviceaccount:istiocbr:default -n istiocbr
+oc policy add-role-to-user view system:serviceaccount:camel-cbr:default -n camel-cbr
 
 
 oc create -f ./src/main/resources/configmap.yml
